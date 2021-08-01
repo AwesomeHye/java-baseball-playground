@@ -1,4 +1,9 @@
 ## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
+---
+## 구현 기능 목록 (서혜인)
+feature 초기 개발
+test 테스트 코드 작성
+
 
 ---
 ## 학습 효과를 높이기 위해 추천하는 미션 진행 방법
@@ -24,3 +29,4 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
