@@ -1,15 +1,18 @@
 package study;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Random;
 
 @Slf4j
+@Getter @Setter
 public class NumberBaseballGame {
     private Integer DIGIT_NUMBER = 3;
     private String continueValue;
     private String answer, input;
-    private int ballCnt, strikeCnt;
+    private Integer ballCnt, strikeCnt;
     private InputView inputView;
     private ResultView resultView;
 
@@ -70,11 +73,20 @@ public class NumberBaseballGame {
         Random random = new Random();
         do {
             int randomNumber = random.nextInt(10);
-            if(isAnswerContainNumber(sb.toString(), String.valueOf(randomNumber))) continue;
-            sb.append(randomNumber);
+            appendAnswerIfUnique(randomNumber, sb);
         } while(sb.length() < 3);
 
         return sb.toString();
+    }
+
+    /**
+     * 고유 숫자이면 정답에 append
+     * @param randomNumber
+     * @param sb
+     */
+    private void appendAnswerIfUnique(int randomNumber, StringBuilder sb) {
+        if(! isAnswerContainNumber(sb.toString(), String.valueOf(randomNumber)))
+            sb.append(randomNumber);
     }
 
     /**
@@ -96,15 +108,22 @@ public class NumberBaseballGame {
 
         for (int i = 0; i < DIGIT_NUMBER; i++) {
             boolean isStrikeNumber = isStrike(i);
-            if(isStrikeNumber) {
-                strikeCnt++;
-            }
-            if (isBall(i, isStrikeNumber)) {
-                ballCnt++;
-            }
+            incrementIfStrkie(isStrikeNumber);
+            incrementIfBall(i, isStrikeNumber);
         }
     }
 
+    private void incrementIfStrkie(boolean isStrikeNumber) {
+        if(isStrikeNumber) {
+            strikeCnt++;
+        }
+    }
+
+    private void incrementIfBall(int i, boolean isStrikeNumber) {
+        if (isBall(i, isStrikeNumber)) {
+            ballCnt++;
+        }
+    }
 
     /**
      * answer, input 에서 인덱스에 해당하는 숫자가 스트라이크인지 여부
