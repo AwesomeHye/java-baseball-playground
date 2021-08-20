@@ -1,3 +1,10 @@
+# <혜인이의 숫자 야구 게임 구현>
+
+### 기능 구현 목록
+* 숫자 유효성 검증 
+    * 1 ~ 9 여야한다.
+---
+---
 ## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
 
 ---
